@@ -1,11 +1,24 @@
 #!/bin/bash -x
 echo "Welcome to the Employee wage program "
 isPresent=1
-checkAttendance=$((RANDOM%2))
+isPartTime=2
+checkAttendance=$((RANDOM%3))
 
-if [ $isPresent -eq $checkAttendance ]
-then
-	echo "Employee Present"
-else
-	echo "Employee Absent"
-fi
+function getWorkHour() {
+
+	case $checkAttendance in
+		$isPresent)
+			workHours=8
+			echo "WorkHour is : " $workHours
+			;;
+		$isPartTime)
+   		workHours=4
+			echo "WorkHour is : " $workHours
+		;;
+	*)
+		workHours=0
+		echo "WorkHour is : " $workHours
+		;;
+	esac
+}
+getWorkHour
